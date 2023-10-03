@@ -1,17 +1,83 @@
 #container{
-    height: 600px;
+    height: 700px;
     display: flex;
     align-items: flex-end;
 }
 
 body{
     display: flex;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     align-items: center;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .bar{
     width: 10px;
     background-color: black;
     margin: 1px;
+}
+
+.slider-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    padding: 10px;
+}
+
+.slider-container input{
+    width: 300px;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.slider-container span{
+    margin-left: 10px;
+}
+
+nav{
+    background: cyan;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul button{
+    background-color: darkcyan;
+    color: white; /* Change the text color */
+    border: none;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10px 15px; /* Adjust padding */
+    margin: 0 5px;
+}
+
+.Alg_button {
+    background-color: darkcyan;
+    color: white;
+    border: transparent;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.Alg_button:hover{
+    background: #1b9bff;
+    transition: .5s;
 }
