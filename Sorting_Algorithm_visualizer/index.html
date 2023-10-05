@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting Algorithm visualizer</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
@@ -8,27 +9,21 @@
 <body>
     <nav>
         <div class="slider-container">
+            <button onclick="init()" class="generate-button">New Array</button>
             <input type="range" id="slider" min="10" max="300" value="10" step="1">
             <span id="display">10</span>
         </div>
         <ul>
-            <button class="Alg_button">algo1</button>
-            <button class="Alg_button">algo2</button>
-            <button class="Alg_button">algo3</button>
-            <button class="Alg_button">algo4</button>
-            <button class="Alg_button">algo5</button>
+            <button onclick="bubble_play()" class="Alg_button">Bubble Sort</button>
+            <button onclick="selection_play()" class="Alg_button">Selection Sort</button>
+            <button onclick="insertion_play()" class="Alg_button">Insertion Sort</button>
+            <button onclick="quick_play()" class="Alg_button">Quick Sort</button>
+            <button class="Alg_button">Merge Sort</button>
         </ul>
     </nav>
-    <h1>Sorting Algorithm visualizer</h1>
+    <h1></h1>
     
     <div id="container"></div>
-
-    <hr>
-
-    <div>
-        <button onclick="init()" >generate</button>
-        <button onclick="play()">play</button>
-    </div>
 
     <script src="script.js"></script>
 </body>
