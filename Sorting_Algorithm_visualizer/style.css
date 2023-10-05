@@ -33,7 +33,7 @@ h1{
 #slider{
     -webkit-appearance:none;
     appearance:none;
-    width: 300px;
+    width: 150px;
     height: 10px;
     max-width: 400px;
     background-color: #ccc;
@@ -48,6 +48,30 @@ h1{
     font-size: 20px;
 }
 
+#slider2 {
+    -webkit-appearance:none;
+    appearance:none;
+    width: 150px;
+    height: 10px;
+    max-width: 400px;
+    background-color: #ccc;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+#display2 {
+    color: white;
+    font-size: 20px;
+    margin-left: 10px; /* Adjust spacing */
+}
+
+.slider-container input + #display2 {
+    margin-left: 20px; /* Adjust spacing */
+}
+
 .generate-button {
     background-color: #343A40;
     color: white;
@@ -58,6 +82,7 @@ h1{
     margin: 0 5px;
     margin-left: 5px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .generate-button:hover {
@@ -110,6 +135,7 @@ nav ul button{
     padding: 10px 15px; /* Adjust padding */
     margin: 0px 5px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .Alg_button {
@@ -120,9 +146,11 @@ nav ul button{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 0px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .Alg_button:hover{
     background: #212529;
     transition: .5s;
+    cursor: pointer;
 }

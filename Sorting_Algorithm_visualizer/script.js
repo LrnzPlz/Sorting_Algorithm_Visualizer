@@ -16,6 +16,19 @@ slider.addEventListener('input', function() {
     init();  // Reinitialize the array with the updated number of items
 });
 
+const slider2 = document.getElementById('slider2');
+const display2 = document.getElementById('display2');
+
+slider2.value = 1;
+
+const speedValues = [1, 100, 200, 300, 400, 500, 600]; // Corresponding animation speeds for each level
+
+slider2.addEventListener('input', function() {
+    const sliderValue = parseInt(this.value);
+    animationSpeed = speedValues[sliderValue - 1];
+    display2.innerText = `${animationSpeed} ms`;
+});
+
 n = parseInt(slider.value);
 
 
@@ -55,14 +68,24 @@ function quick_play() {
     const copy = [...array];
     const moves = quickSort(copy);
     animate(moves);
+    colorBarsAfterSort(quickSort);
 }
 
+function heap_play() {
+    clearAnimationFrame();
+    const copy = [...array];
+    const moves = heapSort(copy);
+    animate(moves);
+}
 
 let animationFrameId;
+
+let animationSpeed = 1;  // Default animation speed
 
 function animate(moves){
     if (moves.length === 0) {
         showBars();
+        colorBarsAfterSort();
         return;
     }
 
@@ -78,12 +101,28 @@ function animate(moves){
 
     setTimeout(function(){
         animate(moves);
-    }, 400); 
+    }, animationSpeed); 
     /*
     animationFrameId = requestAnimationFrame(() => {
         animate(moves);
     });
     */
+}
+
+function colorBarsAfterSort() {
+    const bars = document.querySelectorAll('.bar');
+
+    let index = 0;
+
+    function colorNextBar() {
+        if (index < bars.length) {
+            bars[index].style.backgroundColor = 'green';
+            index++;
+            setTimeout(colorNextBar, 10);
+        }
+    }
+
+    colorNextBar();
 }
 
 function clearAnimationFrame() {
@@ -202,6 +241,43 @@ function quickSort(array) {
     return moves;
 }
 
+function heapify(array, n, i, moves) {
+    let largest = i; 
+    const left = 2 * i + 1; 
+    const right = 2 * i + 2; 
+
+    if (left < n && array[left] > array[largest]) {
+        moves.push({ indices: [left, largest], type: "comp" });
+        largest = left;
+    }
+
+    if (right < n && array[right] > array[largest]) {
+        moves.push({ indices: [right, largest], type: "comp" });
+        largest = right;
+    }
+
+    if (largest !== i) {
+        moves.push({ indices: [i, largest], type: "swap" });
+        [array[i], array[largest]] = [array[largest], array[i]];
+        heapify(array, n, largest, moves);
+    }
+}
+
+function heapSort(array) {
+    const moves = [];
+    const n = array.length;
+
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--)
+        heapify(array, n, i, moves);
+
+    for (let i = n - 1; i >= 0; i--) {
+        moves.push({ indices: [0, i], type: "swap" });
+        [array[0], array[i]] = [array[i], array[0]];
+        heapify(array, i, 0, moves);
+    }
+
+    return moves;
+}
 
 
 
@@ -229,13 +305,5 @@ function showBars(move){
 
 
 /*TO DO:
-create a top bar with buttons. OK
-set up sliding bar for array size: min 10 max 100 (?) (the size has to change with the number). OK
-after the sort is done the array becomes one color. NO
-put a "slow" mode and a "fast" mode. 
-implement other algorithms.
-change the style.
-fix bubble sort so it doesnt check the already sorted part of the array. OK
-Make the page responsive.
 Move the title on top (?).
 */
