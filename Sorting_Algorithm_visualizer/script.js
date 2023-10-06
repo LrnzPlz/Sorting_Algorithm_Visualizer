@@ -7,7 +7,7 @@ let isAnimationInProgress = false;
 const slider = document.getElementById('slider');
 const display = document.getElementById('display');
 
-slider.value = 10;
+slider.value = 80;
 
 slider.addEventListener('input', function() {
     n = parseInt(this.value);  // Update n based on slider value
@@ -39,14 +39,16 @@ function init(){
     for(let i = 0; i < n; i++){
         array.push(Math.random());
     }
-    showBars();
+    showBars(); 
 }
-
 
 function playSortingAlgorithm(algorithm) {
     if (isAnimationInProgress) {
         return;
     }
+
+    const newArrayButton = document.querySelector('.generate-button');
+    newArrayButton.disabled = true;
 
     slider.disabled = true;
 
@@ -90,13 +92,38 @@ let animationFrameId;
 
 let animationSpeed = 1;  // Default animation speed
 
+let isAnimationStopped = false;
+
+function stopAnimation() {
+    isAnimationStopped = true;
+
+    const stopButton = document.getElementById('stopButton');
+    stopButton.disabled = false;
+}
+
 function animate(moves){
+    if (isAnimationStopped) {
+        isAnimationStopped = false; // Reset the flag for future animations
+        showBars(); // Show the final state of the bars
+        isAnimationInProgress = false;
+        slider.disabled = false;
+        enableSortingButtons();
+
+        const newArrayButton = document.querySelector('.generate-button');
+        newArrayButton.disabled = false;
+
+        return;
+    }
     if (moves.length === 0) {
         showBars();
         colorBarsAfterSort();
         isAnimationInProgress = false; // Animation is complete
         slider.disabled = false;
         enableSortingButtons();
+
+        const newArrayButton = document.querySelector('.generate-button');
+        newArrayButton.disabled = false;
+        
         return;
     }
 
@@ -113,11 +140,7 @@ function animate(moves){
     setTimeout(function(){
         animate(moves);
     }, animationSpeed); 
-    /*
-    animationFrameId = requestAnimationFrame(() => {
-        animate(moves);
-    });
-    */
+    
 }
 
 function disableSortingButtons() {
@@ -311,7 +334,7 @@ function heapSort(array) {
 function showBars(move){
     container.innerHTML = "";
 
-    const fragment = document.createDocumentFragment();  // Create a document fragment for batch DOM insertion
+    const fragment = document.createDocumentFragment(); 
 
     for (let i = 0; i < array.length; i++) {
         const bar = document.createElement("div");
@@ -327,10 +350,6 @@ function showBars(move){
     }
 
     container.style.setProperty('--num-bars', n);
-    container.appendChild(fragment);  // Batch DOM insertion
+    container.appendChild(fragment);
 }
 
-
-/*TO DO:
-Move the title on top (?).
-*/

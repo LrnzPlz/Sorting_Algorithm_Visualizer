@@ -30,10 +30,32 @@ h1{
     margin: 0 1px;
 }
 
+.stop-button {
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10px 15px;
+    margin: 0 5px;
+    margin-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.stop-button:enabled {
+    background-color: red;
+}
+
+.stop-button:hover:enabled {
+    background: darkred;
+    transition: .5s;
+}
+
+
 #slider{
     -webkit-appearance:none;
     appearance:none;
-    width: 150px;
+    width: auto;
     height: 10px;
     max-width: 400px;
     background-color: #ccc;
@@ -41,6 +63,7 @@ h1{
     padding: 0;
     border-radius: 10px;
     cursor: pointer;
+    margin-right: 15px;
 }
 
 #slider:disabled {
@@ -50,7 +73,7 @@ h1{
 #slider2 {
     -webkit-appearance:none;
     appearance:none;
-    width: 150px;
+    width: auto;
     height: 10px;
     max-width: 400px;
     background-color: #ccc;
@@ -58,17 +81,17 @@ h1{
     padding: 0;
     border-radius: 10px;
     cursor: pointer;
-    margin-left: 1px;
+    margin-right: 15px;
 }
 
 .slider-container input + #display2 {
     margin-left: 15px; /* Adjust spacing */
 }
 .slider-label {
-    margin-right: 5px; /* Adjust spacing */
+    margin-right: 10px; /* Adjust spacing */
     font-size: 20px; /* Adjust font size */
     color: white; /* Adjust text color */
-    margin-left: 15px;
+    margin-left: 10px; /* Adjust left margin */
 }
 
 .generate-button {
@@ -78,10 +101,10 @@ h1{
     font-size: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 10px 15px;
-    margin: 0 5px;
     margin-left: 5px;
     border-radius: 10px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .generate-button:hover {
@@ -89,20 +112,21 @@ h1{
     transition: .5s;
 }
 
+.generate-button:disabled {
+    background-color: #ccc;
+    color: red;
+    cursor: not-allowed;
+}
+
 .slider-container{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    position: absolute;
-    margin-top: 0px;
-    left: -10px;
-    padding: 10px;
+    flex-grow: 1;
 }
 
 .slider-container input{
-    width: 300px;
-    margin-right: 10px;
-    margin-left: 10px;
+    width: auto; /* Allow the width to be auto-adjusted */
+    flex-grow: 1;
 }
 
 .slider-container span{
@@ -114,8 +138,9 @@ nav{
     height: 80px;
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 nav ul{
@@ -123,6 +148,7 @@ nav ul{
     list-style: none;
     margin: 0;
     padding: 0;
+    margin-right: auto;
 }
 
 nav ul button{
