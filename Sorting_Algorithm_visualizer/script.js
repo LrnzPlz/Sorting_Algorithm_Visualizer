@@ -1,15 +1,13 @@
 let n;
 const array = [];
 
+let isAnimationInProgress = false;
+
 
 const slider = document.getElementById('slider');
 const display = document.getElementById('display');
 
 slider.value = 10;
-
-setInterval(() => {
-    display.innerText = slider.value;
-}, 300);
 
 slider.addEventListener('input', function() {
     n = parseInt(this.value);  // Update n based on slider value
@@ -17,16 +15,16 @@ slider.addEventListener('input', function() {
 });
 
 const slider2 = document.getElementById('slider2');
-const display2 = document.getElementById('display2');
 
-slider2.value = 1;
+const speedValues = [1, 100, 250, 450, 600, 700]; // Corresponding animation speeds for each level
+const totalSpeedLevels = speedValues.length;
 
-const speedValues = [1, 100, 200, 300, 400, 500, 600]; // Corresponding animation speeds for each level
+slider2.value = speedValues.length;
 
 slider2.addEventListener('input', function() {
     const sliderValue = parseInt(this.value);
-    animationSpeed = speedValues[sliderValue - 1];
-    display2.innerText = `${animationSpeed} ms`;
+    // Calculate the reversed animation speed
+    animationSpeed = speedValues[totalSpeedLevels - sliderValue];
 });
 
 n = parseInt(slider.value);
@@ -34,7 +32,9 @@ n = parseInt(slider.value);
 
 init();
 
+
 function init(){
+
     array.length = 0;
     for(let i = 0; i < n; i++){
         array.push(Math.random());
@@ -43,6 +43,11 @@ function init(){
 }
 
 function bubble_play(){
+    if (isAnimationInProgress) {
+        return;
+    }
+
+    disableSortingButtons();
     clearAnimationFrame();
     const copy=[...array];
     const moves=bubbleSort(copy);
@@ -50,6 +55,11 @@ function bubble_play(){
 }
 
 function selection_play(){
+    if (isAnimationInProgress) {
+        return;
+    }
+
+    disableSortingButtons();
     clearAnimationFrame();
     const copy=[...array];
     const moves=selectionSort(copy);
@@ -57,6 +67,11 @@ function selection_play(){
 }
 
 function insertion_play(){
+    if (isAnimationInProgress) {
+        return;
+    }
+
+    disableSortingButtons();
     clearAnimationFrame();
     const copy=[...array];
     const moves=insertionSort(copy);
@@ -64,6 +79,11 @@ function insertion_play(){
 }
 
 function quick_play() {
+    if (isAnimationInProgress) {
+        return;
+    }
+
+    disableSortingButtons();
     clearAnimationFrame();
     const copy = [...array];
     const moves = quickSort(copy);
@@ -72,6 +92,11 @@ function quick_play() {
 }
 
 function heap_play() {
+    if (isAnimationInProgress) {
+        return;
+    }
+
+    disableSortingButtons();
     clearAnimationFrame();
     const copy = [...array];
     const moves = heapSort(copy);
@@ -86,6 +111,8 @@ function animate(moves){
     if (moves.length === 0) {
         showBars();
         colorBarsAfterSort();
+        isAnimationInProgress = false; // Animation is complete
+        enableSortingButtons();
         return;
     }
 
@@ -107,6 +134,22 @@ function animate(moves){
         animate(moves);
     });
     */
+}
+
+function disableSortingButtons() {
+    const buttons = document.querySelectorAll('.Alg_button');
+    for (const button of buttons) {
+        button.disabled = true;
+        button.classList.add('disabled');
+    }
+}
+
+function enableSortingButtons() {
+    const buttons = document.querySelectorAll('.Alg_button');
+    for (const button of buttons) {
+        button.disabled = false;
+        button.classList.remove('disabled');
+    }
 }
 
 function colorBarsAfterSort() {

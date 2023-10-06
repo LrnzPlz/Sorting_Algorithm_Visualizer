@@ -43,11 +43,6 @@ h1{
     cursor: pointer;
 }
 
-#display{
-    color: white;
-    font-size: 20px;
-}
-
 #slider2 {
     -webkit-appearance:none;
     appearance:none;
@@ -59,17 +54,17 @@ h1{
     padding: 0;
     border-radius: 10px;
     cursor: pointer;
-    margin-left: 25px;
-}
-
-#display2 {
-    color: white;
-    font-size: 20px;
-    margin-left: 10px; /* Adjust spacing */
+    margin-left: 1px;
 }
 
 .slider-container input + #display2 {
-    margin-left: 20px; /* Adjust spacing */
+    margin-left: 15px; /* Adjust spacing */
+}
+.slider-label {
+    margin-right: 5px; /* Adjust spacing */
+    font-size: 20px; /* Adjust font size */
+    color: white; /* Adjust text color */
+    margin-left: 15px;
 }
 
 .generate-button {
@@ -153,4 +148,16 @@ nav ul button{
     background: #212529;
     transition: .5s;
     cursor: pointer;
+}
+
+.Alg_button:disabled {
+    background-color: #ccc; /* Change to the desired color */
+    color: red; /* Change to the desired color */
+    cursor: not-allowed;
+}
+
+.disabled {
+    background-color: #ccc; /* Change to the desired color */
+    color: red; /* Change to the desired color */
+    cursor: not-allowed;
 }
