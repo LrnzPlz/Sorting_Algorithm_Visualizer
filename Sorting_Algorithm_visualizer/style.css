@@ -43,6 +43,10 @@ h1{
     cursor: pointer;
 }
 
+#slider:disabled {
+    background-color: red; /* Change to the desired color when disabled */
+}
+
 #slider2 {
     -webkit-appearance:none;
     appearance:none;

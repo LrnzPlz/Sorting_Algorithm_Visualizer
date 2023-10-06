@@ -42,66 +42,49 @@ function init(){
     showBars();
 }
 
-function bubble_play(){
+
+function playSortingAlgorithm(algorithm) {
     if (isAnimationInProgress) {
         return;
     }
 
-    disableSortingButtons();
-    clearAnimationFrame();
-    const copy=[...array];
-    const moves=bubbleSort(copy);
-    animate(moves);    
-}
-
-function selection_play(){
-    if (isAnimationInProgress) {
-        return;
-    }
+    slider.disabled = true;
 
     disableSortingButtons();
     clearAnimationFrame();
-    const copy=[...array];
-    const moves=selectionSort(copy);
-    animate(moves);    
-}
 
-function insertion_play(){
-    if (isAnimationInProgress) {
-        return;
-    }
-
-    disableSortingButtons();
-    clearAnimationFrame();
-    const copy=[...array];
-    const moves=insertionSort(copy);
-    animate(moves);    
-}
-
-function quick_play() {
-    if (isAnimationInProgress) {
-        return;
-    }
-
-    disableSortingButtons();
-    clearAnimationFrame();
     const copy = [...array];
-    const moves = quickSort(copy);
-    animate(moves);
-    colorBarsAfterSort(quickSort);
-}
+    let moves;
 
-function heap_play() {
-    if (isAnimationInProgress) {
-        return;
+    switch (algorithm) {
+        case 'bubble':
+            moves = bubbleSort(copy);
+            break;
+        case 'selection':
+            moves = selectionSort(copy);
+            break;
+        case 'insertion':
+            moves = insertionSort(copy);
+            break;
+        case 'quick':
+            moves = quickSort(copy);
+            colorBarsAfterSort(quickSort);
+            break;
+        case 'heap':
+            moves = heapSort(copy);
+            break;
+        default:
+            return;
     }
 
-    disableSortingButtons();
-    clearAnimationFrame();
-    const copy = [...array];
-    const moves = heapSort(copy);
     animate(moves);
 }
+
+document.getElementById('bubbleButton').addEventListener('click', () => playSortingAlgorithm('bubble'));
+document.getElementById('selectionButton').addEventListener('click', () => playSortingAlgorithm('selection'));
+document.getElementById('insertionButton').addEventListener('click', () => playSortingAlgorithm('insertion'));
+document.getElementById('quickButton').addEventListener('click', () => playSortingAlgorithm('quick'));
+document.getElementById('heapButton').addEventListener('click', () => playSortingAlgorithm('heap'));
 
 let animationFrameId;
 
@@ -112,6 +95,7 @@ function animate(moves){
         showBars();
         colorBarsAfterSort();
         isAnimationInProgress = false; // Animation is complete
+        slider.disabled = false;
         enableSortingButtons();
         return;
     }

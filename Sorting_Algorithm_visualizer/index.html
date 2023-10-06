@@ -10,6 +10,7 @@
     <nav>
         <div class="slider-container">
             <button onclick="init()" class="generate-button">New Array</button>
+            <button id="stopButton" class="generate-button" style="display: none;">Stop</button>
             <div class="slider-label">Array size:</div>
             <input type="range" id="slider" min="10" max="300" value="10" step="1">
             
@@ -18,11 +19,11 @@
             
         </div>
         <ul>
-            <button onclick="bubble_play()" class="Alg_button">Bubble Sort</button>
-            <button onclick="selection_play()" class="Alg_button">Selection Sort</button>
-            <button onclick="insertion_play()" class="Alg_button">Insertion Sort</button>
-            <button onclick="quick_play()" class="Alg_button">Quick Sort</button>
-            <button onclick="heap_play()" class="Alg_button">Heap Sort</button>
+            <button id="bubbleButton" class="Alg_button">Bubble Sort</button>
+            <button id="selectionButton" class="Alg_button">Selection Sort</button>
+            <button id="insertionButton" class="Alg_button">Insertion Sort</button>
+            <button id="quickButton" class="Alg_button">Quick Sort</button>
+            <button id="heapButton" class="Alg_button">Heap Sort</button>
         </ul>
     </nav>
     <h1></h1>
