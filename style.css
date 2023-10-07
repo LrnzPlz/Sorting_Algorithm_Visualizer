@@ -1,0 +1,193 @@
+#container{
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 90vw; /* Adjusted width */
+    overflow: hidden; /* Hide overflowing content */
+}
+
+body{
+    display: flex;
+    background-color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.bar{
+    flex: 1;
+    width: calc(100% / var(--num-bars));
+    background-color: black;
+    margin: 0 1px;
+}
+
+.stop-button {
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10px 15px;
+    margin: 0 5px;
+    margin-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.stop-button:enabled {
+    background-color: red;
+}
+
+.stop-button:hover:enabled {
+    background: darkred;
+    transition: .5s;
+}
+
+
+#slider{
+    -webkit-appearance:none;
+    appearance:none;
+    width: auto;
+    height: 10px;
+    max-width: 400px;
+    background-color: #ccc;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+#slider:disabled {
+    background-color: red; /* Change to the desired color when disabled */
+}
+
+#slider2 {
+    -webkit-appearance:none;
+    appearance:none;
+    width: auto;
+    height: 10px;
+    max-width: 400px;
+    background-color: #ccc;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.slider-container input + #display2 {
+    margin-left: 15px; /* Adjust spacing */
+}
+.slider-label {
+    margin-right: 10px; /* Adjust spacing */
+    font-size: 20px; /* Adjust font size */
+    color: white; /* Adjust text color */
+    margin-left: 10px; /* Adjust left margin */
+}
+
+.generate-button {
+    background-color: #343A40;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10px 15px;
+    margin-left: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.generate-button:hover {
+    background: #212529;
+    transition: .5s;
+}
+
+.generate-button:disabled {
+    background-color: #ccc;
+    color: red;
+    cursor: not-allowed;
+}
+
+.slider-container{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.slider-container input{
+    width: auto; /* Allow the width to be auto-adjusted */
+    flex-grow: 1;
+}
+
+.slider-container span{
+    margin-left: 10px;
+}
+
+nav{
+    background: #6C757D;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-right: auto;
+}
+
+nav ul button{
+    background-color: #343A40;
+    color: white; /* Change the text color */
+    border: none;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10px 15px; /* Adjust padding */
+    margin: 0px 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.Alg_button {
+    background-color: #343A40;
+    color: white;
+    border: transparent;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 0px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.Alg_button:hover{
+    background: #212529;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.Alg_button:disabled {
+    background-color: #ccc; /* Change to the desired color */
+    color: red; /* Change to the desired color */
+    cursor: not-allowed;
+}
+
+.disabled {
+    background-color: #ccc; /* Change to the desired color */
+    color: red; /* Change to the desired color */
+    cursor: not-allowed;
+}

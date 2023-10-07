@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm visualizer</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+    <nav>
+        <div class="slider-container">
+            <button onclick="stopAnimation()" id="stopButton" class="stop-button">Stop</button>
+            <button onclick="init()" class="generate-button">New Array</button>
+            <div class="slider-label">Array size:</div>
+            <input type="range" id="slider" min="10" max="300" value="10" step="1">
+            
+            <div class="slider-label">Speed:</div>
+            <input type="range" id="slider2" min="1" max="6" value="1" step="1">
+            
+        </div>
+        <ul>
+            <button id="bubbleButton" class="Alg_button">Bubble Sort</button>
+            <button id="selectionButton" class="Alg_button">Selection Sort</button>
+            <button id="insertionButton" class="Alg_button">Insertion Sort</button>
+            <button id="quickButton" class="Alg_button">Quick Sort</button>
+            <button id="heapButton" class="Alg_button">Heap Sort</button>
+        </ul>
+    </nav>
+    <h1></h1>
+    
+    <div id="container"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
